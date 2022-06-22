@@ -10,13 +10,12 @@ const RecipeList: FC = () => {
     const [fetching, setFetching] = useState(true);
 
     useEffect(() => {
-        const getRecipes = async () => {
+        (async () => {
             const response = await fetch('http://192.168.1.6:8000/api/v1/recipes')
             const json = await response.json();
             setFetching(false)
             setRecipes(json)
-        }
-        getRecipes();
+        })();
     }, [])
 
     if (fetching) {

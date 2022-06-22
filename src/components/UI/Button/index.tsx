@@ -10,11 +10,11 @@ interface Props {
     onPress: () => any,
 }
 
-const Button: FC<Props> = ({ text, onPress }) => {
+const Button: FC<Props> = ({ text, style, onPress }) => {
     return (
         <Pressable onPress={onPress}>
-            <View style={styles.btn}>
-                <CustomText text={text} style={styles.content} />
+            <View style={[styles.btn, style]}>
+                <CustomText text={text} style={[styles.content, style]} />
             </View>
         </Pressable>
     )

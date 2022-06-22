@@ -1,15 +1,20 @@
-import { FC } from 'react';
-import { Text } from 'react-native';
+import { FC, useState } from 'react';
+import Container from '../components/UI/Container';
+import UserProfileHeader from '../components/UserProfileHeader';
+import SignUpScreen from './SignUpScreen';
 
-const UserProfileScreen: FC<Props> = () => {
+const UserProfileScreen: FC = () => {
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    if (!isAuthenticated) {
+        return <SignUpScreen />
+    }
+
     return (
-        // Profile image -> 
-        // User full name
-        // Follower, Following, Recipes
-        // Edit -> (if user owns account)
-        // <ProfileHeader />
-        // list of user recipes
-        <Text>User Profile</Text>
+        <Container>
+            <UserProfileHeader />
+            {/* Recipe list owned by authenticated user */}
+        </Container>
     )
 }
 
