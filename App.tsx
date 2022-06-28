@@ -1,14 +1,16 @@
-import Cam from './src/components/Camera';
 import AppStack from './src/navigation/Stack';
-import SignUpScreen from './src/screens/SignUpScreen';
 
-import { RecipeProvider } from './src/store/RecipeContext';
+import RecipeProvider from './src/store/RecipeContext';
+import UserProvider from './src/store/UserContext';
 
 
 const App = () => {
     return (
-        <Cam />
-        
+        <UserProvider>
+            <RecipeProvider>
+                <AppStack />
+            </RecipeProvider>
+        </UserProvider>
     )
 }
 

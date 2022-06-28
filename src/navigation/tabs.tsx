@@ -8,6 +8,8 @@ import renderIcon from './Icon';
 import RecipeFeedScreen from '../screens/RecipeFeedScreen';
 import UserProfileScreen from '../screens/UserProfileScreen';
 import RecipeFormScreen from '../screens/RecipeFormScreen';
+import CameraButton from '../components/CameraButton';
+import AuthStack from './AuthStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -34,14 +36,19 @@ const Tabs: FC = () => {
                 component={RecipeFormScreen}
                 options={{
                     headerShown: true,
+                    headerRight: () => <CameraButton />,
+                    headerTitle: '',
+                    headerStyle: {
+                        backgroundColor: '#fafafa',
+                    }
                 }}
             />
             {/* USER PROFILE SCREEN */}
             <Tab.Screen
-                name='Profile'
-                component={UserProfileScreen}
+                name='Auth'
+                component={AuthStack}
                 options={{
-                    tabBarIcon: ({ tintColor }) => <Ionicons name='person-circle-sharp' color={tintColor} size={25} />
+                    tabBarIcon: ({ tintColor }) => <Ionicons name='person-circle-sharp' color={tintColor} size={25} />,
                 }}
             />
         </Tab.Navigator>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FlatList } from "react-native"
+import { FlatList, View } from "react-native"
 import { styles } from './styles';
 
 import CategoryItem from "../CategoryItem";
@@ -13,22 +13,24 @@ const CategoryList: FC = () => {
         (async () => {
             const response = await fetch('http://192.168.1.6:8000/api/v1/categories/');
             const json = await response.json()
-            setFetching(false) 
+            setFetching(false)
             setCategories(json)
         })()
     }, [])
-    
+
     if (fetching) {
         return <LoadingOverlay />
     }
-
+    
     return (
-        <FlatList
-            horizontal={true}
-            data={categories}
-            keyExtractor={(item) => item._id}
-            renderItem={(data) => <CategoryItem name={data.item.category_name} />}
-        />
+        <View style={styles.container}>
+            <FlatList
+                horizontal={true}
+                data={categories}
+                keyExtractor={(item) => item._id}
+                renderItem={(data) => <CategoryItem name={data.item.name} />}
+            />
+        </View>
     )
 }
 

@@ -6,14 +6,16 @@ import CustomText from "../CustomText";
 import styles from './styles';
 
 interface Props {
-    text: string,
+    text?: string,
+    btnStyle?: {}
+    style?: {},
     onPress: () => any,
 }
 
-const Button: FC<Props> = ({ text, style, onPress }) => {
+const Button: FC<Props> = ({ text, btnStyle, style, onPress }) => {
     return (
         <Pressable onPress={onPress}>
-            <View style={[styles.btn, style]}>
+            <View style={[styles.btn, btnStyle]}>
                 <CustomText text={text} style={[styles.content, style]} />
             </View>
         </Pressable>

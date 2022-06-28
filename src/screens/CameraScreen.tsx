@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { Camera, CameraType } from 'expo-camera';
-import { TouchableOpacity, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-
-import { styles } from './styles';
-import CustomText from "../UI/CustomText";
+import CustomText from "../components/UI/CustomText";
 
 
-const Cam = () => {
+const CameraScreen = () => {
     const [hasPermission, setHasPermission] = useState(null)
     const [camera, setCamera] = useState(null)
+    const [image, setImage] = useState(null)
     const [type, setType] = useState(CameraType.back);
 
     useEffect(() => {
@@ -26,7 +25,7 @@ const Cam = () => {
     const takePicture = async () => {
         if (camera) {
             const data = await camera.takePictureAsync(null)
-            console.log(data.uri)
+            setImage(data.uri)
         }
     }
 
@@ -57,4 +56,31 @@ const Cam = () => {
     )
 }
 
-export default Cam;
+
+export const styles = StyleSheet.create({
+    cameraContainer: {
+        flex: 1,
+    },
+    camera: {
+        flex: 1,
+    },
+    typeBtn: {
+        position: 'absolute',
+        left: 65,
+        bottom: 60,
+    },
+    btn: {
+        position: 'absolute',
+        alignSelf: 'center',
+        bottom: 40,
+        height: 80,
+        width: 80,
+        borderRadius: 100,
+        borderWidth: 7,
+        borderColor: '#fb4943',
+        backgroundColor: '#cc251d',
+        elevation: 10,
+    }
+})
+
+export default CameraScreen;

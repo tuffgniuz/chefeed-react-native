@@ -3,6 +3,7 @@ import { FlatList } from 'react-native';
 import { fetchRecipes } from '../../utils/api';
 
 import RecipeCard from '../RecipeCard';
+import CustomText from '../UI/CustomText';
 import LoadingOverlay from '../UI/LoadingOverlay';
 
 const RecipeList: FC = () => {
@@ -22,13 +23,18 @@ const RecipeList: FC = () => {
         return <LoadingOverlay />
     }
 
+    if (recipes.length === 0) {
+        console.log('hi')
+        return <CustomText>Wow, such empty</CustomText>
+    }
+
     return (
         <FlatList
             data={recipes}
             renderItem={(data) => (
                 <RecipeCard
                     id={data.item._id}
-                    imageUri={data.item.attachment}
+                    imageUri={data.item.image_url}
                     title={data.item.title}
                     cookingTime={`${data.item.cooking_time} Minutes`}
                 />

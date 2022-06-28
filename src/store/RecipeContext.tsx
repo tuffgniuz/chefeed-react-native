@@ -2,10 +2,14 @@ import { createContext, useState } from 'react';
 
 export const RecipeContext = createContext();
 
-export const RecipeProvider = ({ children }) => {
+const RecipeProvider = ({ children }) => {
 
     return (
-        <RecipeContext.Provider>{children}</RecipeContext.Provider>
+        <RecipeContext.Provider>
+            {children}
+        </RecipeContext.Provider>
     )
 }
 
+
+export default RecipeProvider;
