@@ -1,20 +1,15 @@
-import { LogBox } from 'react-native'
-import AppStack from './src/navigation/Stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar';
+import { FC } from 'react';
 
-import RecipeProvider from './src/store/RecipeContext';
-import UserProvider from './src/store/UserContext';
+import Tabs from './src/navigation/Tabs';
 
-LogBox.ignoreAllLogs(true)
-
-
-const App = () => {
+const App: FC = () => {
     return (
-        <UserProvider>
-            <RecipeProvider>
-                <AppStack />
-            </RecipeProvider>
-        </UserProvider>
-    )
+        <NavigationContainer>
+            <Tabs />
+        </NavigationContainer>
+  );
 }
 
 export default App;
