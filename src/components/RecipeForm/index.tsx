@@ -1,12 +1,8 @@
-import { useNavigation } from "@react-navigation/native";
 import { FC, useState } from "react";
 import { View } from "react-native";
-// import { Text, TextInput } from "react-native";
-import { postRecipe } from "../../utils/http";
 
 import Button from "../UI/Button";
 import CustomInput from "../UI/CustomInput";
-import styles from './styles';
 
 interface Props {
     title: string,

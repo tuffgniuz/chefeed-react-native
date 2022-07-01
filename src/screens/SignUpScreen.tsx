@@ -26,20 +26,21 @@ const SignUpScreen: FC = ({ navigation }) => {
         setName('')
         setEmail('');
         setPassword('')
+        navigation.navigate('RegisterSuccess')
     }
 
     return (
         <Container>
             <Brand />
-            <CustomInput 
+            <CustomInput
                 label='name'
                 options={{
                     value: name,
                     onChangeText: (text: string) => setName(text)
                 }}
             />
-            <CustomInput 
-                label='email' 
+            <CustomInput
+                label='email'
                 options={{
                     autoCapitalize: 'none',
                     value: email,
@@ -56,11 +57,11 @@ const SignUpScreen: FC = ({ navigation }) => {
             />
             {/* <CustomInput label='confirm password' /> */}
             <Button text='Sign up' onPress={signUpOnPress} />
-            <Button 
-                text='Already have an account? Login' 
-                btnStyle={styles.btn} 
+            <Button
+                text='Already have an account? Login'
+                btnStyle={styles.btn}
                 style={styles.text}
-                onPress={navToLogin} 
+                onPress={navToLogin}
             />
         </Container>
     )
