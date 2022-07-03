@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { SafeAreaView, StyleSheet } from "react-native"
+import { Platform, SafeAreaView, StatusBar, StyleSheet } from "react-native"
 
 const Container: FC = ({ children }) => {
     return (
@@ -11,7 +11,10 @@ const Container: FC = ({ children }) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1, 
+        paddingHorizontal: 16,
+        backgroundColor: '#fafafa',
+        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
     }
 })
 
